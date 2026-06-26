@@ -1,0 +1,95 @@
+/* Department-specific editorial helpers (stats, rooms, menu, bar, city). */
+
+.dept__lede {
+  font-family: var(--display);
+  font-size: var(--lead);
+  line-height: 1.3;
+  max-width: 26ch;
+  margin-bottom: var(--row-gap);
+  color: var(--ink);
+}
+
+/* ---- The Hotel: stats ---- */
+.stats { display: flex; flex-direction: column; gap: 1.2rem; }
+.stat { display: flex; flex-direction: column; gap: .25rem; border-bottom: 1px solid var(--hairline); padding-bottom: 1rem; }
+.stat__num {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.stat__label {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* ---- Rooms ---- */
+.rooms__grid { row-gap: clamp(2.6rem, 6vw, 5rem); }
+.room__body { margin-top: 1.1rem; display: flex; flex-direction: column; gap: .9rem; }
+.room__blurb { color: var(--ink-2); max-width: 48ch; }
+.room__cta {
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  align-self: flex-start;
+}
+
+/* ---- Dining: menu ---- */
+.dining__body { margin-top: 1rem; }
+.menu { list-style: none; margin: clamp(1.6rem, 3vw, 2.4rem) 0 1.6rem; padding: 0; }
+.menu__row {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.menu__course { font-family: var(--display); font-style: italic; color: var(--amber); font-size: 1.25rem; }
+.menu__name { font-size: 1.06rem; }
+.menu__note {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* ---- Bar: pours ---- */
+.bar__body { margin-top: 1rem; }
+.pours { list-style: none; margin: 0; padding: 0; }
+.pour { padding: .95rem 0; border-bottom: 1px solid var(--hairline); }
+.pour__top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.pour__name { font-family: var(--display); font-size: 1.35rem; }
+.pour__price { font-family: var(--mono); color: var(--amber); }
+.pour__base {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* ---- City ---- */
+.city__note { margin-top: 1.2rem; }
+
+/* ---- Dark department (the bar at night) ---- */
+.dept--dark { background: var(--ink); color: var(--paper); }
+.dept--dark .dept__head { border-top-color: var(--paper); color: rgba(244, 239, 230, .7); }
+.dept--dark .dept__head b { color: var(--amber); }
+.dept--dark .dept__title,
+.dept--dark .lede,
+.dept--dark .pull { color: var(--paper); }
+.dept--dark .prose p { color: rgba(244, 239, 230, .82); }
+.dept--dark .colrule { border-left-color: rgba(244, 239, 230, .22); }
+.dept--dark .pour { border-bottom-color: rgba(244, 239, 230, .2); }
+.dept--dark .pour__base { color: rgba(244, 239, 230, .6); }
+.dept--dark .figure__media { border-color: rgba(244, 239, 230, .2); background: #221f1a; }
+.dept--dark .figure figcaption { color: rgba(244, 239, 230, .6); border-top-color: rgba(244, 239, 230, .2); }
+.dept--dark .figure figcaption b { color: var(--paper); }

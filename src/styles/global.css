@@ -1,0 +1,264 @@
+/* ============================================================
+   Elixir — Editorial grid-magazine system
+   (reset + grid + magazine primitives, layered on tokens.css)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--body);
+  font-weight: 400;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.02; }
+::selection { background: var(--amber); color: var(--paper); }
+
+/* ---------- layout shell ---------- */
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.bleed { width: 100%; }
+
+/* 12-column editorial grid */
+.mag {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--col-gap);
+  row-gap: var(--row-gap);
+  align-items: start;
+}
+.span-1{grid-column:span 1}.span-2{grid-column:span 2}.span-3{grid-column:span 3}
+.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}
+.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-9{grid-column:span 9}
+.span-10{grid-column:span 10}.span-11{grid-column:span 11}.span-12{grid-column:span 12}
+.start-2{grid-column-start:2}.start-3{grid-column-start:3}.start-4{grid-column-start:4}
+.start-5{grid-column-start:5}.start-6{grid-column-start:6}.start-7{grid-column-start:7}
+.start-8{grid-column-start:8}
+
+/* a vertical column rule sitting to the left of a cell */
+.colrule { border-left: 1px solid var(--hairline); padding-left: var(--col-gap); }
+
+/* ---------- department (section) scaffold ---------- */
+.dept { padding-block: var(--section-y); position: relative; }
+.dept--tint { background: var(--paper-2); }
+
+.dept__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  border-top: 2px solid var(--ink);
+  padding-top: .85rem;
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.dept__head b { color: var(--amber); font-weight: 700; }
+
+.dept__title {
+  font-family: var(--display);
+  font-size: var(--display-xl);
+  line-height: .9;
+  letter-spacing: -.012em;
+  margin-top: clamp(1.5rem, 4vw, 3.2rem);
+  margin-bottom: var(--row-gap);
+  max-width: 16ch;
+}
+.dept__title em { font-style: italic; color: var(--amber); }
+
+/* ---------- editorial primitives ---------- */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--label);
+  letter-spacing: var(--eyebrow-ls);
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 500;
+}
+
+.lede {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: var(--lead);
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+
+.prose p + p { margin-top: 1.1em; }
+.prose p { color: var(--ink-2); max-width: 64ch; }
+
+.dropcap::first-letter {
+  font-family: var(--display);
+  font-weight: 700;
+  float: left;
+  font-size: 4.6em;
+  line-height: .68;
+  padding: .04em .1em 0 0;
+  color: var(--ink);
+}
+
+/* pull-quote that breaks the grid */
+.pull {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.6vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  border-top: 2px solid var(--amber);
+  padding-top: clamp(1rem, 2vw, 1.6rem);
+}
+.pull cite {
+  display: block;
+  margin-top: 1.2rem;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: var(--label);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* metadata key/value rows (mono) */
+.metalist { list-style: none; padding: 0; margin: 0; }
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.2rem;
+  font-family: var(--mono);
+  font-size: var(--small);
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.meta-row > span:first-child {
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: .72rem;
+}
+.tabular { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* marginalia / sidenote */
+.marginalia {
+  font-family: var(--mono);
+  font-size: var(--small);
+  line-height: 1.55;
+  color: var(--ink-dim);
+  border-top: 1px solid var(--hairline);
+  padding-top: .7rem;
+}
+.marginalia b { color: var(--ink); font-weight: 500; }
+
+/* horizontal department/section rule */
+.rule { border: 0; border-top: 1px solid var(--hairline); }
+.rule--ink { border-top: 1px solid var(--ink); }
+
+/* ---------- figure (captioned media plate) ---------- */
+.figure { margin: 0; }
+.figure__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-3);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+}
+.figure__media img, .figure__media video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.figure--portrait .figure__media { aspect-ratio: 9 / 16; max-height: 82vh; }
+.figure--land .figure__media { aspect-ratio: 4 / 3; }
+.figure--wide .figure__media { aspect-ratio: 16 / 10; }
+.figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: .7rem;
+  padding-top: .5rem;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--mono);
+  font-size: .76rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.figure figcaption b { color: var(--ink); font-weight: 500; }
+
+/* ---------- buttons (editorial, mono) ---------- */
+.pill {
+  display: inline-flex; align-items: center; gap: .7em;
+  padding: 1.05em 2.1em; border-radius: var(--radius);
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  border: 1px solid var(--ink); color: var(--ink);
+  background: transparent;
+  transition: background .4s var(--ease), color .4s var(--ease),
+              border-color .4s var(--ease), transform .4s var(--ease);
+}
+.pill:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.pill--solid { background: var(--ink); color: var(--paper); }
+.pill--solid:hover { background: var(--amber); border-color: var(--amber); color: var(--paper); }
+.pill--ghost { border-color: var(--hairline-2); color: var(--ink); }
+.pill:disabled { opacity: .55; pointer-events: none; }
+
+/* animated underline link */
+.ul {
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .4s var(--ease);
+  padding-bottom: 2px;
+}
+.ul:hover { background-size: 100% 1px; }
+
+/* ---------- reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--reveal-dur) var(--ease),
+              transform var(--reveal-dur) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 880px) {
+  .mag { grid-template-columns: 1fr; }
+  [class*="span-"], [class*="start-"] { grid-column: 1 / -1 !important; }
+  .colrule { border-left: 0; padding-left: 0; }
+  .dept__title { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
