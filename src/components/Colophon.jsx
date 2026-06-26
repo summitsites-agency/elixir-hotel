@@ -42,6 +42,10 @@ export default function Colophon() {
           <span>© {year} {site.brandFull}.</span>
           <span>A fictional brand, set in type for demonstration.</span>
         </div>
+
+        <div className="colophon__agency">
+          This website is the property of, and was made by, Summit Sites Agency · © 2026.
+        </div>
       </div>
     </footer>
   );

@@ -57,6 +57,15 @@
   text-transform: uppercase;
   color: rgba(244, 239, 230, .55);
 }
+.colophon__agency {
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
 @media (max-width: 760px) {
   .colophon__grid { grid-template-columns: 1fr 1fr; }
 }
