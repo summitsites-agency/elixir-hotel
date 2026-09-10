@@ -1,7 +1,7 @@
 # Media credits
 
 **Elixir — The Metropolitan Grand Hotel** is a fictional brand built as an editorial
-demo for Summit Sites.
+demo for mossimo Studios.
 
 ## Video
 

@@ -1,6 +1,6 @@
 # Elixir — The Metropolitan Grand Hotel
 
-An **editorial grid-magazine** demo site for [Summit Sites](https://github.com/summitsites-agency).
+An **editorial grid-magazine** demo site for [mossimo Studios](https://mossimo-studios.vercel.app).
 A fictional metropolitan grand hotel, built to showcase design range.
 
 - **Stack:** Vite 6 + React 19, design-token CSS (no framework), [Lenis](https://github.com/darkroomengineering/lenis) smooth scroll, Vitest.

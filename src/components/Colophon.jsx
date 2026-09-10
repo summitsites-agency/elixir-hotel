@@ -8,7 +8,7 @@ export default function Colophon() {
       <div className="wrap">
         <div className="colophon__top">
           <span className="colophon__brand">ELIXIR</span>
-          <span className="colophon__issue">{site.issue} · A Summit Sites editorial demo</span>
+          <span className="colophon__issue">{site.issue} · A mossimo Studios editorial demo</span>
         </div>
 
         <div className="colophon__grid">
@@ -44,7 +44,16 @@ export default function Colophon() {
         </div>
 
         <div className="colophon__agency">
-          This website is the property of, and was made by, Summit Sites Agency · © 2026.
+          This website is the property of, and was made by,{' '}
+          <a
+            href="https://mossimo-studios.vercel.app"
+            target="_blank"
+            rel="noopener"
+            style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+          >
+            mossimo Studios
+          </a>{' '}
+          · © 2026.
         </div>
       </div>
     </footer>
